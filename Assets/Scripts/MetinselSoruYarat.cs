@@ -34,6 +34,23 @@ public class MetinselSoruYarat : MonoBehaviour
         kacinciSoruText.text = CevapManager.index + ". Soru";
 
         audioSource = gameObject.AddComponent<AudioSource>();
+
+        if (SceneManager.GetActiveScene().name == "MetinselSoruOlusturScene")
+        {
+            GameObject siradakiSoru = GameObject.Find("siradakiSoruButton");
+            GameObject anketiTamamla = GameObject.Find("anketiTamamlaButton");
+
+            if (CevapManager.Cevaplar.Count == CevapManager.index + 1)
+            {
+                siradakiSoru.SetActive(false);
+                anketiTamamla.SetActive(true);
+            }
+            else
+            {
+                siradakiSoru.SetActive(true);
+                anketiTamamla.SetActive(false);
+            }
+        }
     }
 
     public void SesDosyasiSec()
@@ -177,7 +194,7 @@ public class MetinselSoruYarat : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void SiradakiSoru()
+    public void SiradakiSoru(GameObject button)
     {
         if (SceneManager.GetActiveScene().name == "MetinselSoruOlusturScene")
         {
@@ -211,15 +228,24 @@ public class MetinselSoruYarat : MonoBehaviour
             kayitci.AnketiKaydet(anket);
         }
 
-        CevapManager.index++;     
+        CevapManager.index++;
 
-        if (CevapManager.Cevaplar[CevapManager.index].cevap == "Metin Kutusu")
+        if (button.name == "siradakiSoruButton")
         {
-            SceneManager.LoadScene("MetinselSoruOlusturScene");
+            if (CevapManager.Cevaplar[CevapManager.index].cevap == "Metin Kutusu")
+            {
+                SceneManager.LoadScene("MetinselSoruOlusturScene");
+            }
+            else if (CevapManager.Cevaplar[CevapManager.index].cevap == "Çoktan Seçmeli")
+            {
+                SceneManager.LoadScene("SecmeliSoruOlusturScene");
+            }
         }
-        else if (CevapManager.Cevaplar[CevapManager.index].cevap == "Çoktan Seçmeli")
+        else if (button.name == "anketiTamamlaButton")
         {
-            SceneManager.LoadScene("SecmeliSoruOlusturScene");
+            SceneManager.LoadScene("MainMenu");
         }
+
+        
     }
 }

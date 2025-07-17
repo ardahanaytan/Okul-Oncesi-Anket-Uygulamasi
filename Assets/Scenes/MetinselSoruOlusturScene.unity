@@ -683,8 +683,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kacinciSoruText: {fileID: 1965315325}
-  siradakiSoru: {fileID: 1772512226}
-  anketiTamamla: {fileID: 1308412804}
   sesKaydi: {fileID: 0}
   secenekler: {fileID: 0}
   yeniSecenek: {fileID: 0}
@@ -692,6 +690,8 @@ MonoBehaviour:
   scrollView: {fileID: 0}
   sesKaydiYuklendiText: {fileID: 0}
   soruInput: {fileID: 1741952851}
+  resimAlani: {fileID: 0}
+  secenekContent: {fileID: 0}
 --- !u!1 &246324882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,8 +1426,8 @@ RectTransform:
   - {fileID: 1741952850}
   - {fileID: 543103166}
   - {fileID: 233848365}
-  - {fileID: 1772512227}
   - {fileID: 1308412808}
+  - {fileID: 1772512227}
   m_Father: {fileID: 2120413238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1766,12 +1766,12 @@ GameObject:
   - component: {fileID: 1308412806}
   - component: {fileID: 1308412805}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: anketiTamamlaButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1308412805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1819,10 +1819,10 @@ MonoBehaviour:
       - m_Target: {fileID: 242945982}
         m_TargetAssemblyTypeName: MetinselSoruYarat, Assembly-CSharp
         m_MethodName: SiradakiSoru
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1308412804}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2265,7 +2265,7 @@ GameObject:
   - component: {fileID: 1772512229}
   - component: {fileID: 1772512228}
   m_Layer: 5
-  m_Name: Button
+  m_Name: siradakiSoruButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2338,10 +2338,10 @@ MonoBehaviour:
       - m_Target: {fileID: 242945982}
         m_TargetAssemblyTypeName: MetinselSoruYarat, Assembly-CSharp
         m_MethodName: SiradakiSoru
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1772512226}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
