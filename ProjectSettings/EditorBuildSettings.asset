@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SecmeliSoruOlusturScene.unity
     guid: 09ead51d8727c364f901d659a777dd59
+  - enabled: 1
+    path: Assets/Scenes/AnketListesiScene.unity
+    guid: b88821933eb7a48a6bd9b45c69b51d7a
+  - enabled: 1
+    path: Assets/Scenes/AnketScene.unity
+    guid: 601989efd41964164b52bb732e39b501
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 9d4922de9b35b75498f33e8e0bc4048b, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
