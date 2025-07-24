@@ -7,9 +7,12 @@ public class AnketManager : MonoBehaviour
     public TextMeshProUGUI anketAdiText;
     public TMP_InputField katilimciAdiInput;
     public GameObject isimPanel;
+    private string katilimciIsmi;
+    private string anketAdi;
+    private Anket anket;
     void Awake()
     {
-        string anketAdi = UygulanacakAnketAdi.GetAnketAdi();
+        anketAdi = UygulanacakAnketAdi.GetAnketAdi();
         anketAdiText.text = anketAdi;
     }
 
@@ -20,9 +23,13 @@ public class AnketManager : MonoBehaviour
 
     public void KatilimciIsmiKaydet()
     {
-        string katilimciIsmi = katilimciAdiInput.text;
+        katilimciIsmi = katilimciAdiInput.text;
         isimPanel.SetActive(false);
-        Debug.Log("Katilimci ismi kaydedildi: " + katilimciIsmi);
+
+        AnketYonetici kayitci = new AnketYonetici();
+        anket = kayitci.AnketiYukle(anketAdi);
     }
+
+    
 
 }
