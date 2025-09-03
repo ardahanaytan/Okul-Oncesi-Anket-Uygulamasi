@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using TMPro;
 
 public class AnketListesiManager : MonoBehaviour
@@ -12,6 +12,7 @@ public class AnketListesiManager : MonoBehaviour
     public GameObject anketPanelPrefab;
     public Transform anketlerContent;
     private string anketAdi;
+    private AnketSonuclariManager asm;
 
     void Awake()
     {

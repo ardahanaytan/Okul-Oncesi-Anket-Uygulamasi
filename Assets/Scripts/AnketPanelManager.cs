@@ -12,5 +12,10 @@ public class AnketPanelManager : MonoBehaviour
         SceneManager.LoadScene("AnketScene");
     }
     
+    public void AnketiDuzenle()
+    {
+        UygulanacakAnketAdi.SetAnketAdi(anketAdiText.text);
+        SceneManager.LoadScene("DuzenleScene");
+    }
 
 }

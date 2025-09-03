@@ -23,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AnketScene.unity
     guid: 601989efd41964164b52bb732e39b501
+  - enabled: 1
+    path: Assets/Scenes/AnketSonuclariScene.unity
+    guid: ffc2ee3269fdf4445bfd0bc82e119ac7
+  - enabled: 1
+    path: Assets/Scenes/MailScene.unity
+    guid: 4f7ee31c06c8a4023a4042fb069e05b3
+  - enabled: 1
+    path: Assets/Scenes/DuzenleScene.unity
+    guid: 769bad42b2e564645862c704b623e566
+  - enabled: 1
+    path: Assets/Scenes/DuzenleListeScene.unity
+    guid: d164a054ae76e40e0bd980d53c450139
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 9d4922de9b35b75498f33e8e0bc4048b, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

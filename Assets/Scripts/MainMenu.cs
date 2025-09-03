@@ -19,4 +19,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("AnketListesiScene");
     }
+
+    public void AnketSonuclari()
+    {
+        SceneManager.LoadScene("AnketSonuclariScene");
+    }
+    public void AnketDuzenle()
+    {
+        SceneManager.LoadScene("DuzenleListeScene");
+    }
 }
