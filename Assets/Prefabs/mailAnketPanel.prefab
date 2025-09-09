@@ -500,7 +500,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9067722376370310290}
         m_TargetAssemblyTypeName: AnketSonuclariManager, Assembly-CSharp
-        m_MethodName: MaileGec
+        m_MethodName: CSVyiFilesaKaydet
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

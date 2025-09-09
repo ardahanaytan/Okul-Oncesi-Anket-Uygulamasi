@@ -101,7 +101,6 @@ public class MetinselSoruYarat : MonoBehaviour
                 audioSource.clip = clip;
                 Debug.Log("Ses Çalıyor");
                 sesKaydi.GetComponent<Image>().color = Color.green;
-                secenekler.interactable = true;
                 sesKaydiYuklendiText.SetActive(true);
             }
         }

@@ -41,7 +41,7 @@ public class ResimIslemleri : MonoBehaviour
     {
         if (!aktifMi) return; // sadece son panel Update çalıştırır
 
-        if (resimText.activeSelf && sesText.activeSelf)
+        if (resimText.activeSelf)
         {
             yeniSecenek.interactable = true;
         }
@@ -57,48 +57,79 @@ public class ResimIslemleri : MonoBehaviour
 
     public void ResimYukleme()
     {
-        
-        anketAdi = CevapManager.Cevaplar[0].cevap;
-        
-
-        string[] resimTurleri = new string[] { "image/" };
-
-        NativeFilePicker.PickFile((path) =>
+        // anket adını güvenle al
+        if (CevapManager.Cevaplar == null || CevapManager.Cevaplar.Count == 0 || CevapManager.Cevaplar[0] == null)
         {
-            if (path == null)
+            Debug.LogError("Anket adı alınamadı (CevapManager).");
+            ButonDurumlariniGuncelle(); // akışı bozmamak için
+            return;
+        }
+
+        anketAdi = CevapManager.Cevaplar[0].cevap;
+
+        if (!NativeGallery.CheckPermission(NativeGallery.PermissionType.Read, NativeGallery.MediaType.Image))
+        {
+            Debug.LogWarning("Galeri izni reddedildi.");
+            return;
+        }
+
+        // Photos/Galeri için NativeGallery kullan
+        NativeGallery.GetImageFromGallery((path) =>
+        {
+            if (string.IsNullOrEmpty(path))
             {
                 Debug.Log("Kullanıcı seçim yapmadı.");
+                ButonDurumlariniGuncelle();
                 return;
             }
 
             Debug.Log("Seçilen dosya: " + path);
 
-            string dosyaAdi = Path.GetFileName(path);
-
-            string anketKlasoru = Path.Combine(Application.persistentDataPath, "Anketler", anketAdi);
-            string imagesDosyaYolu = Path.Combine(anketKlasoru, "Images");
-            
-
-            if (!Directory.Exists(imagesDosyaYolu))
-            {
-                Directory.CreateDirectory(imagesDosyaYolu);
-            }
-
-            string hedefDosyaYoluAmaYanlis = Path.Combine(imagesDosyaYolu, dosyaAdi);
-            hedefDosyaYolu = hedefDosyaYoluAmaYanlis.Replace("\\", "/");
-
             try
             {
+                string dosyaAdi = Path.GetFileName(path);
+
+                string anketKlasoru    = Path.Combine(Application.persistentDataPath, "Anketler", anketAdi);
+                string imagesDosyaYolu = Path.Combine(anketKlasoru, "Images");
+
+                if (!Directory.Exists(imagesDosyaYolu))
+                    Directory.CreateDirectory(imagesDosyaYolu);
+
+                string hedefDosyaYoluAmaYanlis = Path.Combine(imagesDosyaYolu, dosyaAdi);
+                hedefDosyaYolu = hedefDosyaYoluAmaYanlis.Replace("\\", "/");
+
+                // Seçilen resmi kalıcı klasöre kopyala (varsa üzerine yaz)
                 File.Copy(path, hedefDosyaYolu, true);
+
                 Debug.Log("Dosya Kopyalandı: " + hedefDosyaYolu);
 
                 StartCoroutine(ResimGoster(hedefDosyaYolu));
             }
-            catch (IOException ex)
+            catch (System.Exception ex)
             {
                 Debug.LogError("Kopyalama Hatası: " + ex.Message);
             }
-        }, resimTurleri);
+            finally
+            {
+                ButonDurumlariniGuncelle();
+            }
+
+        }, "Bir fotoğraf seçin", "image/*");
+    }
+
+    // Mevcut buton mantığını ayırıp çağırıyoruz, akış değişmesin
+    private void ButonDurumlariniGuncelle()
+    {
+        if (CevapManager.Cevaplar.Count == CevapManager.index + 1)
+        {
+            siradakiSoru.SetActive(false);
+            anketiTamamla.SetActive(true);
+        }
+        else
+        {
+            siradakiSoru.SetActive(true);
+            anketiTamamla.SetActive(false);
+        }
     }
 
     IEnumerator ResimGoster(string path)
@@ -170,16 +201,7 @@ public class ResimIslemleri : MonoBehaviour
                 }
             }
 
-        if (CevapManager.Cevaplar.Count == CevapManager.index + 1)
-        {
-            siradakiSoru.SetActive(false);
-            anketiTamamla.SetActive(true);
-        }
-        else
-        {
-            siradakiSoru.SetActive(true);
-            anketiTamamla.SetActive(false);
-        }
+        
     }
 
     public string GetSecenekMetni()

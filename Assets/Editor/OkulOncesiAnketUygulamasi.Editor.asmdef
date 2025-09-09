@@ -1,0 +1,5 @@
+{
+  "name": "OkulOncesiAnketUygulamasi.Editor",
+  "includePlatforms": [ "Editor" ],
+  "references": []
+}

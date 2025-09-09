@@ -407,5 +407,10 @@ public static class NativeFilePicker
 				callback( false );
 		}, false );
 	}
-	#endregion
+
+    public static void PickMedia(Action<object> value, string[] resimTurleri)
+    {
+        throw new NotImplementedException();
+    }
+    #endregion
 }

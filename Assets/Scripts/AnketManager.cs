@@ -7,7 +7,6 @@ using System.Collections;
 using UnityEngine.Networking;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
-using UnityEditor;
 
 
 public class AnketManager : MonoBehaviour
@@ -44,7 +43,7 @@ public class AnketManager : MonoBehaviour
     void Start()
     {
         anket = kayitci.AnketiYukle(anketAdi);
-        csvYolu = kayitci.CSVPath(anketAdi);
+        csvYolu = AnketYonetici.CSVPath(anketAdi);
         soruSayisi = anket.sorular.Count;
     }
 

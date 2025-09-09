@@ -38,7 +38,7 @@ public class AnketYonetici : MonoBehaviour
         return anket;
     }
     
-    public string CSVPath(string anketAdi)
+    public static string CSVPath(string anketAdi)
     {
         string csvYolu = Path.Combine(Application.persistentDataPath, "Anketler", anketAdi, "cevaplar.csv");
         return csvYolu;
